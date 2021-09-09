@@ -1,13 +1,19 @@
 from helper import CannotBreed
-from helper import CannotBreed
 from helper import copulate
 from helper import Gender
 from helper import get_new_generation
 from helper import get_parent
-from helper import name_dict
 from helper import random
 
-# Okay lang ba na ganito i expose si name_dict?
+
+class InitMixin:
+    def __init__(self, gender=Gender.random()):
+        """
+        Args:
+            gender (Gender, optional): If you want to set the gender manually.
+            Defaults to Gender.random().
+        """
+        super().__init__(self.base_name[gender], gender, 1)
 
 
 class Panthera:
@@ -86,7 +92,7 @@ class Panthera:
         return random.choice([Tiger, Lion, Jaguar, Leopard])
 
 
-class Tiger(Panthera):
+class Tiger(InitMixin, Panthera):
     """
     1st generation Tiger with random gender.
     """
@@ -95,16 +101,8 @@ class Tiger(Panthera):
         Gender.MALE: "Tiger",
     }
 
-    def __init__(self, gender=Gender.random()):
-        """
-        Args:
-            gender (Gender, optional): If you want to set the gender manually.
-            Defaults to Gender.random().
-        """
-        super().__init__(Tiger.base_name[gender], gender, 1)
 
-
-class Lion(Panthera):
+class Lion(InitMixin, Panthera):
     """
     1st generation Lion with random gender.
     """
@@ -113,16 +111,8 @@ class Lion(Panthera):
         Gender.MALE: "Lion",
     }
 
-    def __init__(self, gender=Gender.random()):
-        """
-        Args:
-            gender (Gender, optional): If you want to set the gender manually.
-            Defaults to Gender.random().
-        """
-        super().__init__(Lion.base_name[gender], gender, 1)
 
-
-class Jaguar(Panthera):
+class Jaguar(InitMixin, Panthera):
     """
     1st generation Jaguar with random gender.
     """
@@ -131,16 +121,8 @@ class Jaguar(Panthera):
         Gender.MALE: "Jaguar",
     }
 
-    def __init__(self, gender=Gender.random()):
-        """
-        Args:
-            gender (Gender, optional): If you want to set the gender manually.
-            Defaults to Gender.random().
-        """
-        super().__init__(Jaguar.base_name[gender], gender, 1)
 
-
-class Leopard(Panthera):
+class Leopard(InitMixin, Panthera):
     """
     1st generation Leopard with random gender.
     """
@@ -148,11 +130,3 @@ class Leopard(Panthera):
         Gender.FEMALE: "Leopardess",
         Gender.MALE: "Leopard",
     }
-
-    def __init__(self, gender=Gender.random()):
-        """
-        Args:
-            gender (Gender, optional): If you want to set the gender manually.
-            Defaults to Gender.random().
-        """
-        super().__init__(Leopard.base_name[gender], gender, 1)

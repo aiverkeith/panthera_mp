@@ -1,9 +1,9 @@
+from helper import name_dict
 from panthera import CannotBreed
 from panthera import Gender
 from panthera import Jaguar
 from panthera import Leopard
 from panthera import Lion
-from panthera import name_dict
 from panthera import Tiger
 
 
